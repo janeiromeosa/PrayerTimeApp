@@ -1,7 +1,8 @@
-package com.example.praytime
+package com.example.praytime.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.praytime.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
