@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainActivity">
+
+    <fragment
+        android:id="@+id/locationActivity"
+        android:name="com.example.praytime.view.location.LocationActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/second_screen"
+        android:name="com.example.praytime.Second_screen"
+        android:label="second_screen_fragment"
+        tools:layout="@layout/second_screen_fragment" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.praytime.MainActivity"
+        android:label="nav_host_fragment"
+        tools:layout="@layout/nav_host_fragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" >
+        <action
+            android:id="@+id/action_mainActivity_to_locationActivity"
+            app:destination="@id/locationActivity" />
+        <action
+            android:id="@+id/action_mainActivity_to_second_screen"
+            app:destination="@id/second_screen" />
+    </activity>
+</navigation>

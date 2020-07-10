@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="app_orientation_portrait_only">true</bool>
+</resources>
