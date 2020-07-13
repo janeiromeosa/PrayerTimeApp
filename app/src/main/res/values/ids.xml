@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item
+        name="iv_prayer_day_time"
+        type="id">
+    </item>
+    <item
+        name="tv_prayer_names"
+        type="id">
+    </item>
+</resources>

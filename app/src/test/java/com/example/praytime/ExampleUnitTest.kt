@@ -1,4 +1,4 @@
-package com.example.praytime
+package com.prayertime
 
 import org.junit.Test
 
