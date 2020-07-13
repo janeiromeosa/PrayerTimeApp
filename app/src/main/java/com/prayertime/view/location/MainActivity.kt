@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
 import android.widget.Toast
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 
 
 import com.google.android.gms.location.LocationCallback
@@ -16,6 +18,7 @@ import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.prayertime.R
 import com.prayertime.view.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -30,6 +33,9 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val navHostFragment = supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
+        NavigationUI.setupWithNavController(bottom_navigation, navHostFragment!!.navController)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()

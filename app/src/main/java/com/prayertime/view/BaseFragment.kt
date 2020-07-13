@@ -1,8 +1,8 @@
 package com.prayertime.view
 
-import dagger.android.support.DaggerAppCompatDialogFragment
+import dagger.android.support.DaggerFragment
 
-abstract class BaseFragment: DaggerAppCompatDialogFragment() {
+abstract class BaseFragment: DaggerFragment() {
 
 
 }
