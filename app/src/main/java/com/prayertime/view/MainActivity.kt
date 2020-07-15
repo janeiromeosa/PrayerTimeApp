@@ -1,4 +1,4 @@
-package com.prayertime.view.location
+package com.prayertime.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -16,8 +16,10 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.prayertime.BaseActivity
 import com.prayertime.R
-import com.prayertime.view.BaseActivity
+import com.prayertime.view.location.LocationFragment
+import com.prayertime.view.location.LocationViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -41,13 +43,16 @@ class MainActivity : BaseActivity() {
 
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        locationViewModel.getLocation(fusedLocationClient)
         getLastLocation()
         testFragment()
 
     }
 
     fun testFragment(){
-        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, LocationFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,
+            LocationFragment()
+        ).commit()
     }
 
     override fun onRequestPermissionsResult(

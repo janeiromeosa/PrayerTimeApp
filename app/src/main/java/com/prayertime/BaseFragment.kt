@@ -1,4 +1,4 @@
-package com.prayertime.view
+package com.prayertime
 
 import dagger.android.support.DaggerFragment
 

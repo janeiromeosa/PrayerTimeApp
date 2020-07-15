@@ -1,4 +1,4 @@
-package com.prayertime.di.location
+package com.prayertime.di.app
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

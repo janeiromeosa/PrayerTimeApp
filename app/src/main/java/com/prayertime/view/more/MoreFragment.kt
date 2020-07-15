@@ -1,4 +1,4 @@
-package com.prayertime.view.location
+package com.prayertime.view.more
 
 import android.os.Bundle
 import android.view.LayoutInflater

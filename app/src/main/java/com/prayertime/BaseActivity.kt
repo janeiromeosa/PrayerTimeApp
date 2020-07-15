@@ -1,4 +1,4 @@
-package com.prayertime.view
+package com.prayertime
 
 import android.Manifest
 import android.content.Context
@@ -8,7 +8,6 @@ import android.location.LocationManager
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.prayertime.R
 import dagger.android.support.DaggerAppCompatActivity
 
 

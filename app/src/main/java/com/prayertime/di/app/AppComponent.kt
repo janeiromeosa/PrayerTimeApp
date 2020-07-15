@@ -1,8 +1,8 @@
 package com.prayertime.di.app
 
+import android.content.Context
 import com.prayertime.MyApp
 import com.prayertime.di.location.MainViewModelModule
-import com.prayertime.di.location.ViewModelFactoryModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -24,6 +24,9 @@ interface AppComponent: AndroidInjector<MyApp> {
 
         @BindsInstance
         fun applicationBind(myApp: MyApp): Builder
+
+        @BindsInstance
+        fun contextBind(context: Context): Builder
 
         fun build(): AppComponent
     }

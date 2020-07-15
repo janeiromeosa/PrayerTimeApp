@@ -1,9 +1,9 @@
 package com.prayertime.di.app
 
-import com.prayertime.viewmodel.LocalDataSource
-import com.prayertime.viewmodel.LocalDataSourceImpl
-import com.prayertime.viewmodel.Repository
-import com.prayertime.viewmodel.RepositoryImpl
+import com.prayertime.repository.LocalDataSource
+import com.prayertime.repository.LocalDataSourceImpl
+import com.prayertime.repository.Repository
+import com.prayertime.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

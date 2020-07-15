@@ -1,10 +1,12 @@
 package com.prayertime.view.location
 
+import android.location.Location
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.prayertime.data.DataLocation
-import com.prayertime.viewmodel.Repository
+import com.prayertime.repository.Repository
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -22,6 +24,8 @@ class LocationViewModel @Inject constructor(private val repository: Repository):
     private val locationObservable: MutableLiveData<DataLocation> = MutableLiveData()
     private val errorObservable:MutableLiveData<Boolean> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    private var location : MutableLiveData<Location> = MutableLiveData()
+
 
     fun getGPSCordinates(lat: String, lon: String) {
         compositeDisposable.add(
@@ -35,9 +39,17 @@ class LocationViewModel @Inject constructor(private val repository: Repository):
         )
     }
 
+    fun getLocation(fused: FusedLocationProviderClient) {
+        fused!!.lastLocation
+            .addOnSuccessListener {loc: Location? ->
+                location.value = loc
+            }
+    }
+
     fun getIssObservable() = locationObservable
     fun getProgressObservable() = progressObservable
     fun getErrorObservable() = errorObservable
+    fun getLocationObserable() = location
 
 
 

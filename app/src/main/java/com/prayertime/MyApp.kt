@@ -10,6 +10,7 @@ class MyApp : DaggerApplication(){
         DaggerAppComponent
             .builder()
             .applicationBind(this)
+            .contextBind(this)
             .build()
 
 }

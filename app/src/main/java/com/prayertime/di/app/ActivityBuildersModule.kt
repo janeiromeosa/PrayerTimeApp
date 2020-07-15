@@ -4,8 +4,8 @@ import com.prayertime.di.direction.DirectionActivityModule
 import com.prayertime.di.location.MainActivityModule
 import com.prayertime.di.location.MainActivityScope
 import com.prayertime.di.location.MainFragmentBuildersModule
+import com.prayertime.view.MainActivity
 import com.prayertime.view.direction.DirectionActivity
-import com.prayertime.view.location.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

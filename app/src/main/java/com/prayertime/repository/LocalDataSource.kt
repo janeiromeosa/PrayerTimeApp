@@ -1,4 +1,4 @@
-package com.prayertime.viewmodel
+package com.prayertime.repository
 
 import com.prayertime.data.DataLocation
 import io.reactivex.Single

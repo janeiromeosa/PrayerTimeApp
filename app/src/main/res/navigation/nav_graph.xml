@@ -8,13 +8,13 @@
 
     <fragment
         android:id="@+id/moreFragment"
-        android:name="com.prayertime.view.location.MoreFragment"
+        android:name="com.prayertime.view.more.MoreFragment"
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" />
 
     <fragment
         android:id="@+id/directionFragment"
-        android:name="com.prayertime.view.location.DirectionFragment"
+        android:name="com.prayertime.view.direction.DirectionFragment"
         android:label="fragment_direction"
         tools:layout="@layout/fragment_direction" />
 
