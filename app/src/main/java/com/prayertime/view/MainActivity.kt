@@ -20,15 +20,20 @@ import com.prayertime.BaseActivity
 import com.prayertime.R
 import com.prayertime.view.location.LocationFragment
 import com.prayertime.view.location.LocationViewModel
+import com.prayertime.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 import org.koin.android.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 
 class MainActivity : BaseActivity() {
 
 
     private val locationViewModel by viewModel<LocationViewModel>()
+
+    @Inject
+    lateinit var providerFactory: ViewModelFactory
 
 
 
@@ -43,10 +48,18 @@ class MainActivity : BaseActivity() {
 
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        locationViewModel.getLocation(fusedLocationClient)
+//        locationViewModel.getLocation(fusedLocationClient)
         getLastLocation()
         testFragment()
 
+    }
+
+    @SuppressLint("MissingPermission")
+    fun getFusedLocation(){
+        fusedLocationClient!!.lastLocation
+            .addOnSuccessListener {loc: Location? ->
+//                location.value = loc
+            }
     }
 
     fun testFragment(){
@@ -77,8 +90,10 @@ class MainActivity : BaseActivity() {
                     if (location == null) {
                         requestNewLocationData()
                     } else {
-                        location.latitude.toString()
-                        location.longitude.toString()
+
+                        val lat = location.latitude.toString()
+                        val lon = location.longitude.toString()
+                        locationViewModel.getGPSCordinates(lat, lon)
                     }
                 }
             } else {

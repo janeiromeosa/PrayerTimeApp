@@ -44,9 +44,9 @@ class LocationFragment : DaggerFragment() {
         Log.d(TAG, "onViewCreated: Location Fragment was created")
 
         locationViewModel = ViewModelProvider(this, providerFactory).get(LocationViewModel::class.java)
-//        locationViewModel.getLocationObserable().observe(this, androidx.lifecycle.Observer {
-//
-//        }
+        locationViewModel.getLocationObservable().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+
+        })
     }
 
     fun azan() {
