@@ -1,6 +1,7 @@
 package com.prayertime.di.app
 
 import com.prayertime.viewmodel.LocalDataSource
+import com.prayertime.viewmodel.LocalDataSourceImpl
 import com.prayertime.viewmodel.Repository
 import com.prayertime.viewmodel.RepositoryImpl
 import dagger.Module
@@ -16,5 +17,11 @@ class RepositoryModule {
         return RepositoryImpl(
             localDataSource
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalDataSource(): LocalDataSource {
+        return LocalDataSourceImpl()
     }
 }

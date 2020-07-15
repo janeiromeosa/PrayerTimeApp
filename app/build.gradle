@@ -13,7 +13,7 @@ android {
         targetSdkVersion 30
 
         versionCode 2
-        versionNamee "1.0"
+        versionName "1.0"
         multiDexEnabled true  //ADD THIS LINE
 
 

@@ -37,9 +37,17 @@ class MainActivity : BaseActivity() {
         val navHostFragment = supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
         NavigationUI.setupWithNavController(bottom_navigation, navHostFragment!!.navController)
 
+        Toast.makeText(this@MainActivity, "MainActivity", Toast.LENGTH_LONG).show()
+
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
+        testFragment()
 
+    }
+
+    fun testFragment(){
+        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, LocationFragment()).commit()
     }
 
     override fun onRequestPermissionsResult(
