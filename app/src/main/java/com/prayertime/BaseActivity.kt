@@ -15,7 +15,9 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 
     lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    val PERMISSION_ID = 42
+    companion object{
+        val PERMISSION_ID = 42
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

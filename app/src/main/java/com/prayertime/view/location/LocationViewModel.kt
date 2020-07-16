@@ -19,35 +19,23 @@ class LocationViewModel @Inject constructor(private val repository: Repository):
     }
 
     private val progressObservable = MutableLiveData<Boolean>()
-    private val locationObservable: MutableLiveData<DataLocation> = MutableLiveData()
-    private val errorObservable:MutableLiveData<Boolean> = MutableLiveData()
+    private val errorObservable: MutableLiveData<Boolean> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    private val gpsObservable: MutableLiveData<DataLocation> = MutableLiveData()
 
-
-    fun getGPSCordinates(lat: String, lon: String) {
-        compositeDisposable.add(
-            repository.getLocationInformation(lat, lon)
-                .doOnSubscribe { progressObservable.postValue(true) }
-                .doOnError { progressObservable.value = false }
-                .subscribe({ value ->
-                    locationObservable.value = value
-                    progressObservable.value = false
-                }, { errorObservable.value = true })
-        )
+    fun setLastKnowLocation(lat: String, lon: String) {
+        gpsObservable.postValue(DataLocation(lat, lon))
+        Log.wtf(TAG, lat)
+        Log.wtf(TAG, lon)
     }
 
-
-    fun getLocationObservable() = locationObservable
+    fun getLocationObservable() = gpsObservable
     fun getProgressObservable() = progressObservable
     fun getErrorObservable() = errorObservable
-
-
 
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.clear()
 
     }
-
-
 }

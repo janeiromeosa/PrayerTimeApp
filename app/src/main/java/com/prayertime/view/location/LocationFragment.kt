@@ -17,7 +17,6 @@ import dagger.android.support.DaggerFragment
 import java.util.*
 import javax.inject.Inject
 
-
 class LocationFragment : DaggerFragment() {
 
     lateinit var locationViewModel: LocationViewModel
@@ -51,11 +50,12 @@ class LocationFragment : DaggerFragment() {
 
     fun azan() {
         val today = SimpleDate(GregorianCalendar())
-        val location = Location(30.045411, 31.236735, 2.0, 0)
-        val azan = Azan(location, Method.EGYPT_SURVEY)
+        val location = Location(51.3140215, -0.1271871, 1.0, 0)
+        val azan = Azan(location, Method.KARACHI_SHAF)
         val prayerTimes = azan.getPrayerTimes(today)
         val imsaak = azan.getImsaak(today)
         println("----------------results------------------------")
+        println("Time$today")
         println("date ---> " + today.day + " / " + today.month + " / " + today.year)
         println("imsaak ---> $imsaak")
         println("Fajr ---> " + prayerTimes.fajr())
@@ -65,6 +65,5 @@ class LocationFragment : DaggerFragment() {
         println("Maghrib --->" + prayerTimes.maghrib())
         println("ISHA  --->" + prayerTimes.ishaa())
         println("----------------------------------------")
-
     }
 }

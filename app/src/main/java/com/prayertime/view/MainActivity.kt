@@ -1,5 +1,6 @@
 package com.prayertime.view
 
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -8,10 +9,9 @@ import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-
-
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
@@ -22,20 +22,15 @@ import com.prayertime.view.location.LocationFragment
 import com.prayertime.view.location.LocationViewModel
 import com.prayertime.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-
-import org.koin.android.viewmodel.ext.android.viewModel
 import javax.inject.Inject
 
 
 class MainActivity : BaseActivity() {
 
-
-    private val locationViewModel by viewModel<LocationViewModel>()
+    private lateinit var locationViewModel : LocationViewModel
 
     @Inject
     lateinit var providerFactory: ViewModelFactory
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,20 +41,12 @@ class MainActivity : BaseActivity() {
 
         Toast.makeText(this@MainActivity, "MainActivity", Toast.LENGTH_LONG).show()
 
+        locationViewModel = ViewModelProvider(this, providerFactory).get(LocationViewModel::class.java)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-//        locationViewModel.getLocation(fusedLocationClient)
         getLastLocation()
         testFragment()
 
-    }
-
-    @SuppressLint("MissingPermission")
-    fun getFusedLocation(){
-        fusedLocationClient!!.lastLocation
-            .addOnSuccessListener {loc: Location? ->
-//                location.value = loc
-            }
     }
 
     fun testFragment(){
@@ -90,10 +77,9 @@ class MainActivity : BaseActivity() {
                     if (location == null) {
                         requestNewLocationData()
                     } else {
-
                         val lat = location.latitude.toString()
                         val lon = location.longitude.toString()
-                        locationViewModel.getGPSCordinates(lat, lon)
+                        locationViewModel.setLastKnowLocation(lat, lon)
                     }
                 }
             } else {
@@ -126,6 +112,7 @@ class MainActivity : BaseActivity() {
             var mLastLocation: Location = locationResult.lastLocation
             mLastLocation.latitude.toString()
             mLastLocation.longitude.toString()
+//            locationViewModel.setlastKnowLocation()
         }
     }
 }
