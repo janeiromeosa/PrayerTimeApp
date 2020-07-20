@@ -28,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="56dp"
-            android:text="3:00pm"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_prayer_names"
             app:layout_constraintEnd_toEndOf="parent"

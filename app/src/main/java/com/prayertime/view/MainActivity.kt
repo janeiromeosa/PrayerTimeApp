@@ -16,18 +16,19 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.prayertime.BaseActivity
 import com.prayertime.R
-import com.prayertime.view.location.LocationFragment
 import com.prayertime.view.location.LocationViewModel
 import com.prayertime.viewmodel.ViewModelFactory
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
 class MainActivity : BaseActivity() {
 
     private lateinit var locationViewModel : LocationViewModel
+    lateinit var bottomNavigationView: BottomNavigationView
+
 
     @Inject
     lateinit var providerFactory: ViewModelFactory
@@ -36,8 +37,10 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navHostFragment = supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-        NavigationUI.setupWithNavController(bottom_navigation, navHostFragment!!.navController)
+//        val navHostFragment = supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
+//        NavigationUI.setupWithNavController(bottom_navigation, navHostFragment!!.navController)
+        testFragment()
+        setUpNavigation()
 
         Toast.makeText(this@MainActivity, "MainActivity", Toast.LENGTH_LONG).show()
 
@@ -45,14 +48,21 @@ class MainActivity : BaseActivity() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
-        testFragment()
 
     }
 
+    fun setUpNavigation() {
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
+        NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment!!.navController
+        )
+    }
+
     fun testFragment(){
-        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,
-            LocationFragment()
-        ).commit()
+//        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,
+//            LocationFragment()
+//        ).commit()
+        
     }
 
     override fun onRequestPermissionsResult(

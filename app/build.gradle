@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.prayertime"
-        minSdkVersion 18
+        minSdkVersion 21
         targetSdkVersion 30
 
         versionCode 2

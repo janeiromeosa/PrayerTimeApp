@@ -22,6 +22,13 @@
         android:id="@+id/locationFragment"
         android:name="com.prayertime.view.location.LocationFragment"
         android:label="LocationFragment"
-        tools:layout="@layout/fragment_location"/>
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_locationFragment_to_directionFragment"
+            app:destination="@id/directionFragment" />
+        <action
+            android:id="@+id/action_locationFragment_to_moreFragment"
+            app:destination="@id/moreFragment" />
+    </fragment>
 
 </navigation>
