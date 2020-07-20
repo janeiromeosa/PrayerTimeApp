@@ -37,9 +37,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val navHostFragment = supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-//        NavigationUI.setupWithNavController(bottom_navigation, navHostFragment!!.navController)
-        testFragment()
         setUpNavigation()
 
         Toast.makeText(this@MainActivity, "MainActivity", Toast.LENGTH_LONG).show()
@@ -48,22 +45,16 @@ class MainActivity : BaseActivity() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
-
     }
 
     fun setUpNavigation() {
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
         NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment!!.navController
+
         )
     }
 
-    fun testFragment(){
-//        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment,
-//            LocationFragment()
-//        ).commit()
-        
-    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -87,9 +78,8 @@ class MainActivity : BaseActivity() {
                     if (location == null) {
                         requestNewLocationData()
                     } else {
-                        val lat = location.latitude.toString()
-                        val lon = location.longitude.toString()
-                        locationViewModel.setLastKnowLocation(lat, lon)
+
+                        locationViewModel.setLastKnowLocation(location.latitude.toString(), location.longitude.toString())
                     }
                 }
             } else {
@@ -120,9 +110,9 @@ class MainActivity : BaseActivity() {
     private val mLocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
             var mLastLocation: Location = locationResult.lastLocation
-            mLastLocation.latitude.toString()
-            mLastLocation.longitude.toString()
-//            locationViewModel.setlastKnowLocation()
+
+            locationViewModel.setLastKnowLocation(mLastLocation.latitude.toString(),
+                    mLastLocation.longitude.toString())
         }
     }
 }

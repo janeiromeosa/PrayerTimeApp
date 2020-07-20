@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.direction.DirectionFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -10,5 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
+
+    <edu.arbelkilani.compass.Compass
+        android:layout_margin="40dp"
+        app:degree_color="@android:color/white"
+        app:show_degree_value="true"
+        app:show_orientation_labels="true"
+        app:orientation_labels_color="@android:color/white"
+        app:degree_value_color="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
 
 </FrameLayout>
