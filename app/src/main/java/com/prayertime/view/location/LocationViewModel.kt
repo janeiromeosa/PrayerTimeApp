@@ -23,10 +23,10 @@ class LocationViewModel @Inject constructor(private val repository: Repository):
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
     private val gpsObservable: MutableLiveData<DataLocation> = MutableLiveData()
 
-    fun setLastKnowLocation(lat: String, lon: String) {
+    fun setLastKnowLocation(lat: Double, lon: Double) {
         gpsObservable.postValue(DataLocation(lat, lon))
-        Log.wtf(TAG, lat)
-        Log.wtf(TAG, lon)
+        Log.wtf(TAG, lat.toString())
+        Log.wtf(TAG, lon.toString())
     }
 
     fun getLocationObservable() = gpsObservable

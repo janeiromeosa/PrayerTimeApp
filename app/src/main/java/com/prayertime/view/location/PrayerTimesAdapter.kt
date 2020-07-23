@@ -44,6 +44,7 @@ class PrayerTimesAdapter: RecyclerView.Adapter<ViewHolder>() {
 
         fun bind(list: DataPrayerTimes) {
             names.text = list.name
+            times.text = list.times
             val image = (ResourcesCompat.getDrawable(itemView.context.resources, list.resId, null) as VectorDrawable).toBitmap()
             imageView.setImageBitmap(image)
         }

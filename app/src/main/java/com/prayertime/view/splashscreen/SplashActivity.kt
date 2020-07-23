@@ -9,7 +9,7 @@ import com.prayertime.view.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 
-    private val SPLASH_DELAY: Long = 2000 //3 seconds
+    private val SPLASH_DELAY: Long = 2000
     private var mDelayHandler: Handler? = null
     private var progressBarStatus = 0
     var dummy:Int = 0

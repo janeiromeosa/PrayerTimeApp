@@ -79,7 +79,7 @@ class MainActivity : BaseActivity() {
                         requestNewLocationData()
                     } else {
 
-                        locationViewModel.setLastKnowLocation(location.latitude.toString(), location.longitude.toString())
+                        locationViewModel.setLastKnowLocation(location.latitude, location.longitude)
                     }
                 }
             } else {
@@ -111,8 +111,8 @@ class MainActivity : BaseActivity() {
         override fun onLocationResult(locationResult: LocationResult) {
             var mLastLocation: Location = locationResult.lastLocation
 
-            locationViewModel.setLastKnowLocation(mLastLocation.latitude.toString(),
-                    mLastLocation.longitude.toString())
+            locationViewModel.setLastKnowLocation(mLastLocation.latitude,
+                    mLastLocation.longitude)
         }
     }
 }
