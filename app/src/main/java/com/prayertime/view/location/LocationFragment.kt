@@ -58,11 +58,11 @@ class LocationFragment : DaggerFragment() {
         locationViewModel = ViewModelProvider(requireActivity(), providerFactory).get(LocationViewModel::class.java)
         locationViewModel.getLocationObservable().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             location = Location(it.latitude, it.longitude, 1.0, 0)
-            addItemToList()
+            setUpAdapter()
         })
     }
 
-    fun addItemToList() {
+    fun setUpAdapter() {
         /*
             move lines 65 6o 68 to view model or repo @TODO
          */
