@@ -9,7 +9,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/ic_mask_group"
         android:backgroundTint="@color/blueColor"
         app:layout_constraintTop_toTopOf="parent"
@@ -60,6 +60,8 @@
     </FrameLayout>
 
 
+
+
     <TextView
         android:id="@+id/tv_prayer_times_text"
         android:layout_width="match_parent"
@@ -67,6 +69,7 @@
         android:layout_marginBottom="36dp"
         android:text="PRAYER TIMES"
         android:textAlignment="center"
+        android:textStyle="bold"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/rv_prayer_view"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +79,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_prayer_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:clickable="false"
         android:nestedScrollingEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"

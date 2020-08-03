@@ -2,7 +2,7 @@ package com.prayertime.di.location
 
 import androidx.lifecycle.ViewModel
 import com.prayertime.di.app.ViewModelKey
-import com.prayertime.view.location.LocationViewModel
+import com.prayertime.view.location.PrayerTimeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -12,8 +12,8 @@ abstract class MainViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(LocationViewModel::class)
-    abstract fun bindProfileViewModel(locationViewModel: LocationViewModel): ViewModel
+    @ViewModelKey(PrayerTimeViewModel::class)
+    abstract fun bindProfileViewModel(prayerTimeViewModel: PrayerTimeViewModel): ViewModel
 
 
 }

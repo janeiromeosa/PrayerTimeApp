@@ -15,7 +15,7 @@ import com.azan.astrologicalCalc.Location
 import com.azan.astrologicalCalc.SimpleDate
 import com.prayertime.R
 import com.prayertime.data.DataPrayerTimes
-import com.prayertime.view.location.LocationViewModel.Companion.TAG
+import com.prayertime.view.location.PrayerTimeViewModel.Companion.TAG
 import com.prayertime.viewmodel.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_location.*
@@ -25,7 +25,7 @@ import javax.inject.Inject
 
 class PrayerTimeFragment : DaggerFragment() {
 
-    lateinit var locationViewModel: LocationViewModel
+    lateinit var prayerTimeViewModel: PrayerTimeViewModel
     lateinit var adapter: PrayerTimesAdapter
     lateinit var location: Location
     lateinit var geocoder: Geocoder
@@ -55,8 +55,8 @@ class PrayerTimeFragment : DaggerFragment() {
     }
 
     private fun getObserverData() {
-        locationViewModel = ViewModelProvider(requireActivity(), providerFactory).get(LocationViewModel::class.java)
-        locationViewModel.getLocationObservable().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+        prayerTimeViewModel = ViewModelProvider(requireActivity(), providerFactory).get(PrayerTimeViewModel::class.java)
+        prayerTimeViewModel.getLocationObservable().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             location = Location(it.latitude, it.longitude, 1.0, 0)
             setUpAdapter()
         })
@@ -95,7 +95,7 @@ class PrayerTimeFragment : DaggerFragment() {
     private fun getCountryInformation(){
         geocoder = Geocoder(requireContext(), Locale.getDefault())
 
-        locationViewModel.getLocationObservable().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+        prayerTimeViewModel.getLocationObservable().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             var address: List<Address>
             address = geocoder.getFromLocation(it.latitude, it.longitude, 1)
             tv_country_origin.text = address.get(0).subAdminArea + ", " + address.get(0).adminArea

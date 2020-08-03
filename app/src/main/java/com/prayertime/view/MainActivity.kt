@@ -19,16 +19,15 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.prayertime.BaseActivity
 import com.prayertime.R
-import com.prayertime.view.location.LocationViewModel
+import com.prayertime.view.location.PrayerTimeViewModel
 import com.prayertime.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
 
 class MainActivity : BaseActivity() {
 
-    private lateinit var locationViewModel : LocationViewModel
+    private lateinit var prayerTimeViewModel : PrayerTimeViewModel
     lateinit var bottomNavigationView: BottomNavigationView
-
 
     @Inject
     lateinit var providerFactory: ViewModelFactory
@@ -41,7 +40,7 @@ class MainActivity : BaseActivity() {
 
         Toast.makeText(this@MainActivity, "MainActivity", Toast.LENGTH_LONG).show()
 
-        locationViewModel = ViewModelProvider(this, providerFactory).get(LocationViewModel::class.java)
+        prayerTimeViewModel = ViewModelProvider(this, providerFactory).get(PrayerTimeViewModel::class.java)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
@@ -51,10 +50,8 @@ class MainActivity : BaseActivity() {
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
         NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment!!.navController
-
         )
     }
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -79,7 +76,7 @@ class MainActivity : BaseActivity() {
                         requestNewLocationData()
                     } else {
 
-                        locationViewModel.setLastKnowLocation(location.latitude, location.longitude)
+                        prayerTimeViewModel.setLastKnowLocation(location.latitude, location.longitude)
                     }
                 }
             } else {
@@ -111,7 +108,7 @@ class MainActivity : BaseActivity() {
         override fun onLocationResult(locationResult: LocationResult) {
             var mLastLocation: Location = locationResult.lastLocation
 
-            locationViewModel.setLastKnowLocation(mLastLocation.latitude,
+            prayerTimeViewModel.setLastKnowLocation(mLastLocation.latitude,
                     mLastLocation.longitude)
         }
     }

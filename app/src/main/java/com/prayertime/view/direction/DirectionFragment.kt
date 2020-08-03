@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.prayertime.R
-import com.prayertime.view.location.LocationViewModel.Companion.TAG
+import com.prayertime.view.location.PrayerTimeViewModel.Companion.TAG
 import edu.arbelkilani.compass.Compass
 import edu.arbelkilani.compass.CompassListener
 
@@ -28,7 +28,7 @@ class DirectionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Test()
+//        Test()
     }
 
     fun Test(){
