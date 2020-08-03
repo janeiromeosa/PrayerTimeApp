@@ -5,7 +5,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class RepositoryImpl (private val localDataSource: LocalDataSource): Repository {
+class RepositoryImpl (private val localDataSource: AzanRepo): Repository {
 
     override fun getPrayerInformation(): Single<List<DataPrayerTimes>> {
         return localDataSource.getPrayerInformation()

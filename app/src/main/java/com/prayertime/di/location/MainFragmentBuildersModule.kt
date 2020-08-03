@@ -1,6 +1,6 @@
 package com.prayertime.di.location
 
-import com.prayertime.view.location.PrayerTimeFragment
+import com.prayertime.view.prayerTime.PrayerTimeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

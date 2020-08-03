@@ -1,7 +1,7 @@
 package com.prayertime.di.app
 
-import com.prayertime.repository.LocalDataSource
-import com.prayertime.repository.LocalDataSourceImpl
+import com.prayertime.repository.AzanRepo
+import com.prayertime.repository.AzanRepoImpl
 import com.prayertime.repository.Repository
 import com.prayertime.repository.RepositoryImpl
 import dagger.Module
@@ -13,7 +13,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideRepository(localDataSource: LocalDataSource): Repository {
+    fun provideRepository(localDataSource: AzanRepo): Repository {
         return RepositoryImpl(
             localDataSource
         )
@@ -21,7 +21,7 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideLocalDataSource(): LocalDataSource {
-        return LocalDataSourceImpl()
+    fun provideLocalDataSource(): AzanRepo {
+        return AzanRepoImpl()
     }
 }

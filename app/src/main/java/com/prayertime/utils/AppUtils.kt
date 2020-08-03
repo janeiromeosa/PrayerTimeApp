@@ -54,3 +54,9 @@ fun convert(latitude: Double, longitude: Double): String? {
     builder.append("\"")
     return builder.toString()
 }
+
+const val fajar  = "Fajar"
+const val zuhr  = "Zuhr"
+const val asr  = "Asr"
+const val magrib  = "Magrib"
+const val isha  = "Isha"

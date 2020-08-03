@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.prayertime.R
-import com.prayertime.view.location.PrayerTimeViewModel.Companion.TAG
+import com.prayertime.view.prayerTime.PrayerTimeViewModel.Companion.TAG
 import edu.arbelkilani.compass.Compass
 import edu.arbelkilani.compass.CompassListener
 
