@@ -1,6 +1,6 @@
 package com.prayertime.di.location
 
-import com.prayertime.view.location.LocationFragment
+import com.prayertime.view.location.PrayerTimeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,5 +8,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class MainFragmentBuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeMainFragment(): LocationFragment
+    abstract fun contributeMainFragment(): PrayerTimeFragment
 }

@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-class LocationFragment : DaggerFragment() {
+class PrayerTimeFragment : DaggerFragment() {
 
     lateinit var locationViewModel: LocationViewModel
     lateinit var adapter: PrayerTimesAdapter
@@ -113,6 +113,4 @@ class LocationFragment : DaggerFragment() {
         val currentTime = sdf.format(Date())
         tv_country_time.text = currentTime
     }
-
-
 }
