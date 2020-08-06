@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.prayertime.view.prayerTime.PrayerTimeFragment"
+        android:name="com.prayertime.view.prayertime.PrayerTimeFragment"
         android:label="LocationFragment"
         tools:layout="@layout/fragment_location">
         <action

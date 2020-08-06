@@ -2,7 +2,7 @@ package com.prayertime.di.location
 
 import androidx.lifecycle.ViewModel
 import com.prayertime.di.app.ViewModelKey
-import com.prayertime.view.prayerTime.PrayerTimeViewModel
+import com.prayertime.view.prayertime.PrayerTimeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

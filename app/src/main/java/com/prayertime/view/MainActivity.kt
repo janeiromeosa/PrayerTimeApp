@@ -19,7 +19,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.prayertime.BaseActivity
 import com.prayertime.R
-import com.prayertime.view.prayerTime.PrayerTimeViewModel
+import com.prayertime.view.prayertime.PrayerTimeViewModel
 import com.prayertime.viewmodel.ViewModelFactory
 import javax.inject.Inject
 

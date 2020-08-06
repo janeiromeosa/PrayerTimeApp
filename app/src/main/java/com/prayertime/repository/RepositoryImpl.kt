@@ -1,16 +1,11 @@
 package com.prayertime.repository
 
+import com.prayertime.data.DataLocation
 import com.prayertime.data.DataPrayerTimes
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class RepositoryImpl (private val localDataSource: AzanRepo): Repository {
 
-    override fun getPrayerInformation(): Single<List<DataPrayerTimes>> {
-        return localDataSource.getPrayerInformation()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+    override fun getPrayerInformation(latLng: DataLocation): List<DataPrayerTimes> {
+        return localDataSource.getPrayerInformation(latLng)
     }
-
 }

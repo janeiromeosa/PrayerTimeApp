@@ -1,12 +1,9 @@
-package com.prayertime.view.prayerTime
+package com.prayertime.view.prayertime
 
-import android.graphics.drawable.VectorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.prayertime.R
 import com.prayertime.data.DataPrayerTimes

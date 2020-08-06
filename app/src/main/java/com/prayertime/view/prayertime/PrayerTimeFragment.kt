@@ -1,7 +1,5 @@
-package com.prayertime.view.prayerTime
+package com.prayertime.view.prayertime
 
-import android.location.Address
-import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -57,7 +55,7 @@ class PrayerTimeFragment : DaggerFragment() {
 
         viewModel.getCountryInformationObservable()
             .observe(viewLifecycleOwner, androidx.lifecycle.Observer { address ->
-                tv_country_origin.text =
+                tv_date.text =
                     "${address.get(0).subAdminArea}, ${address.get(0).adminArea}"
             })
 
@@ -75,18 +73,19 @@ class PrayerTimeFragment : DaggerFragment() {
 
     private fun initializeRecyclerView() {
         rv_prayer_view.layoutManager = LinearLayoutManager(activity)
-        rv_prayer_view.adapter = PrayerTimesAdapter()
+        adapter = PrayerTimesAdapter()
+        rv_prayer_view.adapter = adapter
     }
 
     private fun getDateInformation() {
         val sdf = SimpleDateFormat("EEE, MMM d")
         val currentDate = sdf.format(Date())
-        tv_country_date.text = currentDate
+        tv_date.text = currentDate
     }
 
     private fun getTimeInformation() {
         val sdf = SimpleDateFormat("h:mm a")
         val currentTime = sdf.format(Date())
-        tv_country_time.text = currentTime
+        tv_time.text = currentTime
     }
 }

@@ -13,18 +13,15 @@ class AzanRepoImpl: AzanRepo {
 
     override fun getPrayerInformation(latLng: DataLocation): List<DataPrayerTimes> {
         val today = SimpleDate(GregorianCalendar())
-        val azan = Azan(
-            Location(latLng.latitude, latLng.longitude),
-            Method.KARACHI_SHAF
-        )
+        val azan = Azan(Location(latLng.latitude, latLng.longitude, 1.0, 1), Method.KARACHI_SHAF)
         val prayerTimes = azan.getPrayerTimes(today)
 
         return mutableListOf(
             DataPrayerTimes(fajar, prayerTimes.fajr().toString()),
-            DataPrayerTimes(zuhr, prayerTimes.fajr().toString()),
-            DataPrayerTimes(asr, prayerTimes.fajr().toString()),
-            DataPrayerTimes(magrib, prayerTimes.fajr().toString()),
-            DataPrayerTimes(isha, prayerTimes.fajr().toString())
+            DataPrayerTimes(zuhr, prayerTimes.thuhr().toString()),
+            DataPrayerTimes(asr, prayerTimes.assr().toString()),
+            DataPrayerTimes(magrib, prayerTimes.maghrib().toString()),
+            DataPrayerTimes(isha, prayerTimes.ishaa().toString())
         )
     }
 }

@@ -1,4 +1,4 @@
-package com.prayertime.view.prayerTime
+package com.prayertime.view.prayertime
 
 import android.content.Context
 import android.location.Address
@@ -12,10 +12,7 @@ import io.reactivex.disposables.CompositeDisposable
 import java.util.*
 import javax.inject.Inject
 
-class PrayerTimeViewModel @Inject constructor(
-    private val azanRepo: AzanRepo,
-    private val context: Context
-) : ViewModel() {
+class PrayerTimeViewModel @Inject constructor(private val azanRepo: AzanRepo, private val context: Context) : ViewModel() {
 
     var geocoder: Geocoder = Geocoder(context, Locale.getDefault())
 
@@ -36,7 +33,6 @@ class PrayerTimeViewModel @Inject constructor(
             gpsObservable.value!!.longitude,
             1
         )
-
         countryInformationObservable.value = address
     }
 
