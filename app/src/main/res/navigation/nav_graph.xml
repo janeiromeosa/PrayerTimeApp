@@ -5,13 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/locationFragment">
 
-
-    <fragment
-        android:id="@+id/moreFragment"
-        android:name="com.prayertime.view.more.MoreFragment"
-        android:label="fragment_more"
-        tools:layout="@layout/fragment_more" />
-
     <fragment
         android:id="@+id/directionFragment"
         android:name="com.prayertime.view.direction.DirectionFragment"
@@ -26,9 +19,6 @@
         <action
             android:id="@+id/action_locationFragment_to_directionFragment"
             app:destination="@id/directionFragment" />
-        <action
-            android:id="@+id/action_locationFragment_to_moreFragment"
-            app:destination="@id/moreFragment" />
     </fragment>
 
 </navigation>

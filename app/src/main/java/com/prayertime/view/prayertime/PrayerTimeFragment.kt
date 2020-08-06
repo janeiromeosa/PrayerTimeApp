@@ -8,10 +8,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azan.astrologicalCalc.Location
 import com.prayertime.R
+import com.prayertime.utils.formatToServerDateTimeDefaults
 import com.prayertime.viewmodel.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_location.*
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
@@ -55,7 +55,7 @@ class PrayerTimeFragment : DaggerFragment() {
 
         viewModel.getCountryInformationObservable()
             .observe(viewLifecycleOwner, androidx.lifecycle.Observer { address ->
-                tv_date.text =
+                tv_country.text =
                     "${address.get(0).subAdminArea}, ${address.get(0).adminArea}"
             })
 
@@ -78,14 +78,13 @@ class PrayerTimeFragment : DaggerFragment() {
     }
 
     private fun getDateInformation() {
-        val sdf = SimpleDateFormat("EEE, MMM d")
-        val currentDate = sdf.format(Date())
-        tv_date.text = currentDate
+        val sdf = Date().formatToServerDateTimeDefaults("EEE, MMM d")
+        tv_date.text = sdf
+
     }
 
     private fun getTimeInformation() {
-        val sdf = SimpleDateFormat("h:mm a")
-        val currentTime = sdf.format(Date())
-        tv_time.text = currentTime
+        val sdf = Date().formatToServerDateTimeDefaults("h:mm a")
+        tv_time.text = sdf
     }
 }

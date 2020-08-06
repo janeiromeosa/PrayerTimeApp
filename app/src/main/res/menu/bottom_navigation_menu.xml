@@ -12,12 +12,4 @@
         android:icon="@drawable/ic_baseline_compass_calibration_24"
         android:title="@string/direction" />
 
-    <item
-        android:id="@+id/moreFragment"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_more_vert_24"
-        android:title="@string/menu" />
-
-
-
 </menu>

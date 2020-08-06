@@ -5,13 +5,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.direction.DirectionFragment"
-    android:background="@color/blueColor">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    android:src="@drawable/ic_mask_group"
+    android:background="#2D9CDB"
+    >
 
     <edu.arbelkilani.compass.Compass
         android:layout_margin="40dp"

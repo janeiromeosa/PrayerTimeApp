@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PrayTime</string>
-    <string name="location">Location</string>
-    <string name="direction">Direction</string>
+    <string name="location">GPS Location</string>
+    <string name="direction">Kaaba Direction</string>
     <string name="menu">Menu</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
