@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.direction.DirectionFragment"
-    android:src="@drawable/ic_mask_group"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     android:background="#2D9CDB"
-    >
+    android:src="@drawable/ic_mask_group">
 
-    <edu.arbelkilani.compass.Compass
-        android:layout_margin="40dp"
-        app:degree_color="@android:color/white"
-        app:show_degree_value="true"
-        app:show_orientation_labels="true"
-        app:orientation_labels_color="@android:color/white"
-        app:degree_value_color="@android:color/white"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_compass_degrees"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:textColor="#000" />
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
+        tools:context=".view.direction.DirectionFragment">
 
+        <edu.arbelkilani.compass.Compass
+            android:id="@+id/ic_compass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="40dp"
+            app:degree_color="@android:color/white"
+            app:degree_value_color="@android:color/white"
+            app:orientation_labels_color="@android:color/white"
+            app:show_degree_value="true"
+            app:show_orientation_labels="true" />
 
-</FrameLayout>
+    </FrameLayout>
+
+</LinearLayout>
