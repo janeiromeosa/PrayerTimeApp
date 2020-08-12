@@ -3,9 +3,9 @@ package com.prayertime.view.prayertime
 import android.content.Context
 import android.location.Address
 import android.location.Geocoder
+import android.location.Location
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.prayertime.data.DataLocation
 import com.prayertime.data.DataPrayerTimes
 import com.prayertime.repository.AzanRepo
 import io.reactivex.disposables.CompositeDisposable
@@ -19,12 +19,12 @@ class PrayerTimeViewModel @Inject constructor(private val azanRepo: AzanRepo, pr
     private val progressObservable = MutableLiveData<Boolean>()
     private val errorObservable: MutableLiveData<Boolean> = MutableLiveData()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
-    private val gpsObservable: MutableLiveData<DataLocation> = MutableLiveData()
+    private val gpsObservable: MutableLiveData<Location> = MutableLiveData()
     private val prayerTimeObservable: MutableLiveData<List<DataPrayerTimes>> = MutableLiveData()
     private val countryInformationObservable: MutableLiveData<List<Address>> = MutableLiveData()
 
-    fun setLastKnowLocation(lat: Double, lon: Double) {
-        gpsObservable.postValue(DataLocation(lat, lon))
+    fun setLastKnowLocation(location: Location) {
+        gpsObservable.postValue(location)
     }
 
     fun getAddress() {
@@ -38,7 +38,8 @@ class PrayerTimeViewModel @Inject constructor(private val azanRepo: AzanRepo, pr
 
 
     fun getPrayerTimes() {
-        val prayerTimes = azanRepo.getPrayerInformation(gpsObservable.value!!)
+        val prayerTimes = azanRepo.getPrayerInformation(gpsObservable!!.value!!.latitude,
+            gpsObservable!!.value!!.longitude)
         prayerTimeObservable.value = prayerTimes
     }
 

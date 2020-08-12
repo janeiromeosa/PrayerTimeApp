@@ -24,17 +24,13 @@
         android:layout_height="match_parent"
         tools:context=".view.direction.DirectionFragment">
 
-        <edu.arbelkilani.compass.Compass
-            android:id="@+id/ic_compass"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/compass_needle"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_margin="40dp"
-            app:degree_color="@android:color/white"
-            app:degree_value_color="@android:color/white"
-            app:orientation_labels_color="@android:color/white"
-            app:show_degree_value="true"
-            app:show_orientation_labels="true" />
+            android:layout_width="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/compass_background"
+            android:textAlignment="center" />
 
     </FrameLayout>
 

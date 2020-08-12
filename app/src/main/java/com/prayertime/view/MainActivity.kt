@@ -75,7 +75,7 @@ class MainActivity : BaseActivity() {
                     if (location == null) {
                         requestNewLocationData()
                     } else {
-                        prayerTimeViewModel.setLastKnowLocation(location.latitude, location.longitude)
+                        prayerTimeViewModel.setLastKnowLocation(location)
                     }
                 }
             } else {
@@ -107,8 +107,7 @@ class MainActivity : BaseActivity() {
         override fun onLocationResult(locationResult: LocationResult) {
             var mLastLocation: Location = locationResult.lastLocation
 
-            prayerTimeViewModel.setLastKnowLocation(mLastLocation.latitude,
-                    mLastLocation.longitude)
+            prayerTimeViewModel.setLastKnowLocation(mLastLocation)
         }
     }
 }

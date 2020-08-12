@@ -40,10 +40,7 @@ class PrayerTimeFragment : DaggerFragment() {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(
-            requireActivity(),
-            providerFactory
-        ).get(PrayerTimeViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity(), providerFactory).get(PrayerTimeViewModel::class.java)
     }
 
     private fun initObservables() {
