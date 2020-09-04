@@ -1,5 +1,5 @@
 # PrayerTimeApp
-The App is to calculate: Prayer times (Muslim) using a location's latitude and longitude. The direction to pray. MVVM, Dagger, Viewmodel, Retrofit (If needed), Room, and Navigation from Jetpack, Coroutines or RxJava, Glide or Picasso, Constraint Layouts, Motion Layout, Mockito, Firebase Analytics, Git
+The App is to calculate: Prayer times (Muslim) using a location's latitude and longitude. The direction to pray. MVVM, Dagger, Viewmodel, Room, and Navigation from Jetpack, RxJava, Glide or Picasso, Constraint Layouts, Motion Layout, Mockito, Firebase Analytics, Git, GitFlow
 
 Architectures:
   1. MVVM - (ViewModel, LiveData)
