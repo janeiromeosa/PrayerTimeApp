@@ -9,14 +9,6 @@ import javax.inject.Singleton
 @Module
 class RepositoryModule {
 
-//    @Provides
-//    @Singleton
-//    fun provideRepository(localDataSource: AzanRepo): Repository {
-//        return RepositoryImpl(
-//            localDataSource
-//        )
-//    }
-
     @Provides
     @Singleton
     fun provideLocalDataSource(): AzanRepo {

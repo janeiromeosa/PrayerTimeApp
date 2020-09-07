@@ -1,67 +1,124 @@
-
-import android.content.Context
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.stub
-import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import com.prayertime.data.DataPrayerTimes
 import com.prayertime.repository.AzanRepo
+import com.prayertime.repository.AzanRepoImpl
 import com.prayertime.view.prayertime.PrayerTimeViewModel
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
-import org.junit.experimental.runners.Enclosed
 import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 
-lateinit var SUT: PrayerTimeViewModel
-lateinit var repo: AzanRepo
-lateinit var context: Context
-lateinit var data: DataPrayerTimes
+@RunWith(JUnit4::class)
+class PrayerTimeViewModelTest {
+
+    @get:Rule
+    val rule = InstantTaskExecutorRule()
+    private lateinit var SUT: PrayerTimeViewModel
+
+    lateinit var repo: AzanRepo
+    lateinit var geocoder: Geocoder
+    lateinit var location: Location
+    lateinit var address: Address
+
+    @Before
+    fun setUpTtest() {
+        repo = mock<AzanRepoImpl>()
+        geocoder = mock()
+        location = mock()
+        address = mock()
+        SUT = PrayerTimeViewModel(repo, geocoder)
+        SUT.getLocationObservable().value = location
+    }
+
+    @Test
+    fun `get prayer times data successfully from repository - should not return null`() {
+        //arrange
+        whenever(repo.getPrayerInformation(0.0, 0.0)).thenReturn(
+            fakeList()
+        )
+
+        //act
+        SUT.getPrayerTimes()
+
+        //assert
+        assert(SUT.getPrayerTimesObservable().value != null)
+    }
+
+    @Test
+    fun `get prayer times data successfully from repository - should return null`() {
+        //arrange
+        SUT.getLocationObservable().value = location
+        whenever(repo.getPrayerInformation(0.0, 0.0)).thenReturn(
+            null
+        )
+
+        //act
+        SUT.getPrayerTimes()
+
+        //assert
+        assert(SUT.getPrayerTimesObservable().value == null)
+    }
+
+    @Test
+    fun `get address data successfully from geocoder - should not return null`() {
+        //arrange
+        var listAddress = mutableListOf<Address>(
+            address
+        )
+
+        SUT.getCountryInformationObservable().value = listAddress
+
+        whenever(geocoder.getFromLocation(0.0, 0.0, 1)).thenReturn(
+            fakeAddressList()
+        )
+
+        //act
+        SUT.getAddress()
+
+        //assert
+        assert(SUT.getCountryInformationObservable().value != null)
+    }
 
 
-@RunWith(Enclosed::class)
-class PrayerTimeViewModelTest{
 
-    class viewModel {
+    @Test
+    fun `set location data successfully`() {//arrange
+        val listAddress = mutableListOf<Address>(
+            address
+        )
 
-        @Before
-        fun setUpTtest() {
-            repo = mock()
-            context = mock()
-            data = mock()
-            SUT = PrayerTimeViewModel(repo, context)
-        }
+        SUT.getCountryInformationObservable().value = listAddress
 
-        @Test
-        fun `get prayer times data successfully from repository - should not return null`() {
-            //arrange
-            val fakeList: List<DataPrayerTimes> = fakeList()
-            repo.stub {
-                on { getPrayerInformation(0.0,0.0) }.thenReturn(fakeList)
-            }
-            //act
-            SUT.getPrayerTimes()
+        whenever(geocoder.getFromLocation(0.0, 0.0, 1)).thenReturn(
+            null
+        )
 
-            //assert
-            verify(SUT.getPrayerTimes())
-        }
+        //act
+        SUT.getAddress()
 
-        private fun fakeList(): List<DataPrayerTimes> {
-            data.stub {
-                on { it.name }.thenReturn("")
-                on { it.times }.thenReturn("")
-            }
+        //assert
+        assert(SUT.getCountryInformationObservable().value == null)
+    }
 
-            val list: List<DataPrayerTimes> = listOf(data)
-            return list
-        }
+    private fun fakeList(): List<DataPrayerTimes> {
 
-        @Test
-        fun `get location data successfully from geocoder`() {
+        val data = DataPrayerTimes("", "")
 
-        }
+        return mutableListOf<DataPrayerTimes>(
+            data
+        )
+    }
 
-        @Test
-        fun `set location data successfully`() {
+    private fun fakeAddressList(): List<Address>? {
+        val address = SUT.getCountryInformationObservable().value
 
-        }
+        return address
+
     }
 }
